@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="utf-8">
+ <title>js</title>
+</head>
+<body>
+    <div style="margin-top: 100px">
+        <h1>native与JavaScript交互</h1>
+    </div>
+    <div>
+        <!--  登录    -->
+        <input type="button" value="login" onclick="gotoLogin()">
+    </div>
+    <div>
+        <!--  选择相册    -->
+        <input type="button" value="CallCamera" onclick="XCS.callCamera(method='imageCallback')">
+    </div>
+    <div>
+        <!--   拦截      -->
+        <input type="button" value="Alert" onclick="showAlert()">
+    </div>
+    <script type="text/javascript">
+        
+        // 登录
+        function gotoLogin(){
+            var  userInfo = JSON.stringify({
+                                           "userName": "18099990000",
+                                           "password": "123456"
+                                            })
+            XCS.gotoLoginCallback(userInfo,'loginCallback')
+        }
+        // 登录结果回调
+        function loginCallback(result){
+            alert(result)
+        }
+        // 选择图片回调
+        function imageCallback(images) {
+            alert(images);
+        }
+        // 弹框
+        function showAlert(){
+            XCS.showAlertCallback('title','message')
+        }
+        function message(){
+            
+            alert('success')
+        }
+    </script>
+</body>
+</html>
+
